@@ -1,0 +1,18 @@
+.button {
+    display: block;
+    background-color: rgb(120, 222, 188);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover, &:focus {
+        background-color: rgb(96, 199, 165);
+    }
+
+    &:disabled {
+        background-color: rgb(208, 208, 208);
+    }
+}

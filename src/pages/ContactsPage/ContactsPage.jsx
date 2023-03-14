@@ -1,18 +1,16 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactForm from '../../modules/ContactForm';
+import Filter from '../../modules/Filter';
+import ContactList from '../../modules/ContactList';
 
-import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from '../redux/contacts/contacts-operations';
-import { setFilter } from '../redux/filter/filter-slice';
-import { getAllContacts, getFilteredContacts, getLoading, getError } from '../redux/contacts/contacts-selectors';
-import { getFilter } from '../redux/filter/filter-selectors';
+import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from '../../redux/contacts/contacts-operations';
+import { setFilter } from '../../redux/filter/filter-slice';
+import { getAllContacts, getFilteredContacts, getLoading, getError } from '../../redux/contacts/contacts-selectors';
+import { getFilter } from '../../redux/filter/filter-selectors';
 
-import styles from './app.module.scss';
-
-const App = () => {
+const ContactsPage = () => {
   const contacts = useSelector(getAllContacts);
   const loading = useSelector(getLoading);
   const error = useSelector(getError);
@@ -38,9 +36,9 @@ const App = () => {
   };
 
   const isItems = filteredContacts?.length > 0;
+  
   return (
-    <div className={styles.app}>
-      <h1>Phonebook</h1>
+    <Fragment>
       <ContactForm onSubmit={submitHandler} contacts={contacts} />
       <h2>Contacts</h2>
       <Filter filter={filter} changeFilter={filterHandler} />
@@ -48,8 +46,8 @@ const App = () => {
 
       {loading && <p>Loading...</p>}
       {Boolean(error) && <p>{error}</p>}
-    </div>
+    </Fragment>
   );
 }
 
-export default App;
+export default ContactsPage;
