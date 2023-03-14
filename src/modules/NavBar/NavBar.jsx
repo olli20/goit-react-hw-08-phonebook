@@ -1,22 +1,27 @@
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
-import styles from './nav-bar.module.scss';
+import NavbarAuth from './NavbarAuth';
+import NavbarUser from './NavbarUser';
 
-const getClassList = ({isActive}) => {
-    const classList = (isActive ? `${styles.link} ${styles.active}` : styles.link);
-    return classList;
-}
+import {isUserLogin} from '../../redux/auth/auth-selectors';
+
+import styles from './navbar.module.scss';
+
+// const getClassList = ({isActive}) => {
+//     const classList = (isActive ? `${styles.link} ${styles.active}` : styles.link);
+//     return classList;
+// }
 
 const NavBar = () => {
+    const isLogin = useSelector(isUserLogin);
     return (
         <div className={styles.navbar}>
             <div className={styles.navbarContainer}>
-                <p className={styles.logo}>Phonebook</p>
+                <Link to="/" className={styles.logo}>Phonebook</Link>
                 <div className={styles.auth}>
-                    <NavLink className={getClassList} to={"/"}>Home</NavLink>
-                    <NavLink className={getClassList} to={"/contacts"}>Contacts</NavLink>
-                    <NavLink className={getClassList} to={"/register"}>Sing up</NavLink>
-                    <NavLink className={getClassList} to={"/login"}>Log in</NavLink>
+                    {isLogin && <NavbarUser />}
+                    {!isLogin && <NavbarAuth />}
                 </div>
             </div>
         </div>
