@@ -1,5 +1,5 @@
 
-import NavBar from './modules/NavBar/NavBar';
+import Navbar from './modules/Navbar/Navbar';
 import UserRoutes from './UserRoutes';
 
 import styles from './app.module.scss';
@@ -7,7 +7,7 @@ import styles from './app.module.scss';
 const App = () => {
   return (
     <div className={styles.app}>
-      <NavBar />
+      <Navbar />
       <UserRoutes />
     </div>
   );
