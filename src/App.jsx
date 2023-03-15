@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Navbar from './modules/Navbar/Navbar';
+import MainNavbar from './modules/MainNavbar/MainNavbar';
 import UserRoutes from './UserRoutes';
 import AuthLayout from 'modules/AuthLayout/AuthLayout';
 
@@ -14,7 +14,7 @@ const App = () => {
           <PersistGate loading={null} persistor={persistor}>  
               <AuthLayout>
                   <BrowserRouter basename="goit-react-hw-08-phonebook">       
-                      <Navbar />
+                      <MainNavbar />
                       <UserRoutes />
                   </BrowserRouter>
               </AuthLayout> 
