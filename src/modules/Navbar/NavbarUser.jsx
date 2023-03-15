@@ -24,8 +24,8 @@ const NavbarUser = () => {
 
     return (
         <div className={styles.auth}>
-            <NavLink className={getClassList} to={"/"}>Home</NavLink>
-            <NavLink className={getClassList} to={"/contacts"}>Contacts</NavLink>
+            <NavLink className={getClassList} to="/">Home</NavLink>
+            <NavLink className={getClassList} to="/contacts">Contacts</NavLink>
             <p>Hello, {name} </p>
             <Button onClick={handleLogout} className={styles.logout}>Log out</Button>
         </div>

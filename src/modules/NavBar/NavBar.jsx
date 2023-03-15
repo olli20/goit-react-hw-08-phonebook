@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.navbarContainer}>
-                <Link to={"/"} className={styles.logo}>Phonebook</Link>
+                <Link to="/" className={styles.logo}>Phonebook</Link>
                 <div className={styles.auth}>
                     {isLogin && <NavbarUser />}
                     {!isLogin && <NavbarAuth />}

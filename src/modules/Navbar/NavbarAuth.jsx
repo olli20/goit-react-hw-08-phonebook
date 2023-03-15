@@ -10,8 +10,8 @@ const getClassList = ({ isActive }) => {
 const NavbarAuth = () => {
     return (
         <div className={styles.auth}>
-            <NavLink className={getClassList} to={"/register"}>Sing up</NavLink>
-            <NavLink className={getClassList} to={"/login"}>Log in</NavLink>
+            <NavLink className={getClassList} to="/register">Sing up</NavLink>
+            <NavLink className={getClassList} to="/login">Log in</NavLink>
         </div>
     )
 }
