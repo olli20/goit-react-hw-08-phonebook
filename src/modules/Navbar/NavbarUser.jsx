@@ -1,17 +1,17 @@
 import {NavLink} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Button from '../../shared/components/Button/Button';
+
 import { getUser } from '../../redux/auth/auth-selectors';
 import { logout } from 'redux/auth/auth-operations';
 
 import styles from './navbar.module.scss';
 
-import Button from '../../shared/components/Button/Button';
-
-const getClassList = ({isActive}) => {
+const getClassList = ({ isActive }) => {
     const classList = (isActive ? `${styles.link} ${styles.active}` : styles.link);
     return classList;
-}
+};
 
 const NavbarUser = () => {
     const { name } = useSelector(getUser);

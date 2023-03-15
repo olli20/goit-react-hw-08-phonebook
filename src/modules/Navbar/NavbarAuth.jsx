@@ -2,10 +2,10 @@ import {NavLink} from 'react-router-dom';
 
 import styles from './navbar.module.scss';
 
-const getClassList = ({isActive}) => {
+const getClassList = ({ isActive }) => {
     const classList = (isActive ? `${styles.link} ${styles.active}` : styles.link);
     return classList;
-}
+};
 
 const NavbarAuth = () => {
     return (
