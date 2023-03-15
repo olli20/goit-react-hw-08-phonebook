@@ -21,6 +21,7 @@ const NavbarUser = () => {
     const handleLogout = () => {
         dispatch(logout());
     }
+
     return (
         <div className={styles.auth}>
             <NavLink className={getClassList} to={"/"}>Home</NavLink>
@@ -28,7 +29,7 @@ const NavbarUser = () => {
             <p>Hello, {name} </p>
             <Button onClick={handleLogout} className={styles.logout}>Log out</Button>
         </div>
-    )
+    );
 }
 
 export default NavbarUser;

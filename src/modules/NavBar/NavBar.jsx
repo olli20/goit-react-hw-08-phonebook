@@ -13,7 +13,7 @@ import styles from './navbar.module.scss';
 //     return classList;
 // }
 
-const NavBar = () => {
+const Navbar = () => {
     const isLogin = useSelector(isUserLogin);
     return (
         <div className={styles.navbar}>
@@ -28,4 +28,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+export default Navbar;

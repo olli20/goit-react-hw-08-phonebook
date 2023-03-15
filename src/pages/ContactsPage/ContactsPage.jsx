@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from 'react-router-dom';
 
 import ContactForm from '../../modules/ContactForm';
 import Filter from '../../modules/Filter';
@@ -9,6 +10,7 @@ import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from '../../red
 import { setFilter } from '../../redux/filter/filter-slice';
 import { getAllContacts, getFilteredContacts, getLoading, getError } from '../../redux/contacts/contacts-selectors';
 import { getFilter } from '../../redux/filter/filter-selectors';
+import { getToken } from '../../redux/auth/auth-selectors';
 
 const ContactsPage = () => {
   const contacts = useSelector(getAllContacts);
@@ -16,12 +18,17 @@ const ContactsPage = () => {
   const error = useSelector(getError);
   const filteredContacts = useSelector(getFilteredContacts);
   const filter = useSelector(getFilter);
+  const token = useSelector(getToken);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllContacts());
   }, [dispatch]);
+
+  if(!token) {
+    return <Navigate to="/" />;
+  }
 
   const submitHandler = ({ name, number }) => {
     dispatch(fetchAddContact({ name, number }));
