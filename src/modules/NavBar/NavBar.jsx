@@ -15,8 +15,8 @@ const Navbar = () => {
             <div className={styles.navbarContainer}>
                 <Link to="/" className={styles.logo}>Phonebook</Link>
                 <div className={styles.auth}>
-                    {isLogin && <NavbarUser />}
-                    {!isLogin && <NavbarAuth />}
+                    {/* {isLogin && <NavbarUser />}
+                    {!isLogin && <NavbarAuth />} */}
                 </div>
             </div>
         </div>
