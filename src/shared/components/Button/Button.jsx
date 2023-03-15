@@ -4,12 +4,13 @@ const Button = ({className, disabled, type, onClick, children}) => {
     return (
         <button
             type={type || 'button'}
-            className={`${styles.button} ${className}`}
+            className={`${className} ${styles.button}`}
             onClick={onClick}
             disabled={disabled}
         >
             {children}
         </button>
+
     );
 };
 

@@ -1,27 +1,25 @@
 import axios from 'axios';
 
-const authInstance = axios.create({
+const instance = axios.create({
     baseURL: "https://connections-api.herokuapp.com",
 });
 
 const setToken = (token) => {
     if (token) {
-        return (
-            authInstance.defaults.headers.authorization = `Bearer ${token}`
-        );
+        return instance.defaults.headers.authorization = `Bearer ${token}`;
     }
-    authInstance.defaults.headers.authorization = "";
+    instance.defaults.headers.authorization = "";
 };
 
 export const signup = async (data) => {
-    const response = await authInstance.post("/users/signup", data);
-    console.log("api returns response", response.data.token)
-    // setToken(response.data.token);
-    return response.data;
+    const {data: result} = await instance.post("/users/signup", data);
+    console.log("api returns response", result.token)
+    setToken(result.token);
+    return result;
 };
 
 export const login = async (data) => {
-    const {data: result} = await authInstance.post("/users/login", data);
+    const {data: result} = await instance.post("/users/login", data);
     setToken(result.token);
     return result;
 };
@@ -29,7 +27,7 @@ export const login = async (data) => {
 export const getUser = async (token) => {
     try {
         setToken(token);
-        const {data} = await authInstance.get("/users/current");
+        const {data} = await instance.get("/users/current");
         return data;
     } 
         catch (error) {
@@ -39,9 +37,9 @@ export const getUser = async (token) => {
 };
 
 export const logout = async () => {
-    const {data} = await authInstance.post("/users/logout");
+    const {data} = await instance.post("/users/logout");
     setToken();
     return data;
 };
 
-export default authInstance;
+export default instance;
