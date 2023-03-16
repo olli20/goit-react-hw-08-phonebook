@@ -16,12 +16,11 @@ const RegisterPage = () => {
 
     const handleSingup = (data) => {
         dispatch(signup(data));
-        console.log("RegisterPage says ", data)
     };
 
-    if(isLogin) {
+    if (isLogin) {
         return <Navigate to="/contacts" />;
-    }
+    };
 
     return (
         <div className={styles.container}>
@@ -29,6 +28,6 @@ const RegisterPage = () => {
             {error && <Error className={styles.error}>Some error was occurred</Error>}
         </div>
     );
-}
+};
 
 export default RegisterPage;
