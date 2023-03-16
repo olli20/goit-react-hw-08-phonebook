@@ -7,7 +7,7 @@ const TextField = ({label, handleChange, ...props}) => {
     const id = useMemo(()=> nanoid(), []);
 
     return (
-        <div className={styles.container}>
+        <div className={styles.field}>
             <label className={styles.label} htmlFor={id}>{label}</label>
             <input className={styles.input} id={id} onChange={handleChange} {...props} />
         </div>

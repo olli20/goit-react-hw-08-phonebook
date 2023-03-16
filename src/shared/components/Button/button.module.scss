@@ -1,9 +1,14 @@
 .button {
-    display: block;
-    background-color: rgb(120, 222, 188);
-    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+    color: white;
+    background-color: #0a66c2;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     outline: none;
     font-weight: 600;
     cursor: pointer;

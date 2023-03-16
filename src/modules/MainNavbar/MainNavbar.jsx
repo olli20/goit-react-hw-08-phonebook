@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
-import NavbarAuth from './NavbarAuth';
-import NavbarUser from './NavbarUser';
+import MainMenu from './MainMenu/MainMenu';
+import UserMenu from './UserMenu/UserMenu';
 
 import {isUserLogin} from '../../redux/auth/auth-selectors';
 
@@ -12,12 +12,13 @@ const MainNavbar = () => {
     const isLogin = useSelector(isUserLogin);
     return (
         <div className={styles.navbar}>
-            <div className={styles.navbarContainer}>
-                <Link to="/" className={styles.logo}>Phonebook</Link>
-                <div className={styles.auth}>
-                    {isLogin && <NavbarUser />}
-                    {!isLogin && <NavbarAuth />}
+            <div className={styles.header}>
+                <div className={styles.menu}>
+                    <Link to="/" className={styles.logo}>Phonebook</Link>
+                    <MainMenu />
                 </div>
+                                
+                {isLogin && <UserMenu />}                    
             </div>
         </div>
     );

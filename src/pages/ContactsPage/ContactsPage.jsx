@@ -1,6 +1,5 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate } from 'react-router-dom';
 
 import ContactForm from '../../modules/ContactForm';
 import Filter from '../../modules/Filter';
@@ -10,7 +9,8 @@ import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from '../../red
 import { setFilter } from '../../redux/filter/filter-slice';
 import { getAllContacts, getFilteredContacts, getLoading, getError } from '../../redux/contacts/contacts-selectors';
 import { getFilter } from '../../redux/filter/filter-selectors';
-import { getToken } from '../../redux/auth/auth-selectors';
+
+import styles from './contacts-page.module.scss';
 
 const ContactsPage = () => {
   const contacts = useSelector(getAllContacts);
@@ -18,17 +18,11 @@ const ContactsPage = () => {
   const error = useSelector(getError);
   const filteredContacts = useSelector(getFilteredContacts);
   const filter = useSelector(getFilter);
-  const token = useSelector(getToken);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllContacts());
   }, [dispatch]);
-
-  if(!token) {
-    return <Navigate to="/" />;
-  }
 
   const submitHandler = ({ name, number }) => {
     dispatch(fetchAddContact({ name, number }));
@@ -43,17 +37,21 @@ const ContactsPage = () => {
   };
 
   const isItems = filteredContacts?.length > 0;
+  const noContacts = contacts?.length > 0;
   
   return (
-    <Fragment>
+    <main className={styles.main}>
+      <div className={styles.contacts}>
+        <h1 className={styles.title}>Your contacts</h1>
+        <Filter filter={filter} changeFilter={filterHandler} />
+        {isItems && <ContactList contacts={filteredContacts} onRemoveContact={removeHandler} />}
+        {!noContacts && <p>You have no added contacts jet</p>}
+        {loading && <p>Loading...</p>}
+        {Boolean(error) && <p>{error}</p>}
+      </div>
+      
       <ContactForm onSubmit={submitHandler} contacts={contacts} />
-      <h2>Contacts</h2>
-      <Filter filter={filter} changeFilter={filterHandler} />
-      {isItems && <ContactList contacts={filteredContacts} onRemoveContact={removeHandler} />}
-
-      {loading && <p>Loading...</p>}
-      {Boolean(error) && <p>{error}</p>}
-    </Fragment>
+    </main>
   );
 }
 
