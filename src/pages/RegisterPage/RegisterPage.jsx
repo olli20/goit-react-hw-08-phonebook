@@ -2,12 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import {signup} from '../../redux/auth/auth-operations';
-import {isUserLogin} from '../../redux/auth/auth-selectors';
+import {isUserLogin, getError} from '../../redux/auth/auth-selectors';
 
+import Error from 'shared/components/Error/Error';
 import RegisterForm from '../../modules/RegisterForm/RegisterForm';
+
+import styles from './register-page.module.scss';
 
 const RegisterPage = () => {
     const isLogin = useSelector(isUserLogin);
+    const error = useSelector(getError);
     const dispatch = useDispatch();
 
     const handleSingup = (data) => {
@@ -20,7 +24,10 @@ const RegisterPage = () => {
     }
 
     return (
-        <RegisterForm onSubmit={handleSingup} />
+        <div className={styles.container}>
+            <RegisterForm onSubmit={handleSingup} />
+            {error && <Error className={styles.error}>Some error was occurred</Error>}
+        </div>
     );
 }
 

@@ -12,14 +12,14 @@ const RegisterForm = ({onSubmit}) => {
     const { name, email, password } = state;
 
     return (
-        <Card className={styles.card}>
-            <form onSubmit={handleSubmit} className={styles.form}>
-                <TextField value={name} handleChange={handleChange} {...fields.name} />
-                <TextField value={email} handleChange={handleChange} {...fields.email} />
-                <TextField value={password} handleChange={handleChange} {...fields.password} />
-                <Button className={styles.button} type="submit" disabled={false}>Register</Button>
-            </form>
-        </Card>
+            <Card className={styles.card}>
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <TextField value={name} handleChange={handleChange} {...fields.name} />
+                    <TextField value={email} handleChange={handleChange} {...fields.email} />
+                    <TextField value={password} handleChange={handleChange} {...fields.password} />
+                    <Button className={styles.button} type="submit" disabled={false}>Register</Button>
+                </form>
+            </Card>
     );
 };
 

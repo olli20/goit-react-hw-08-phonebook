@@ -1,3 +1,16 @@
+.list {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.listItem {
+    font-size: 18px;
+
+    &:not(:last-child) {
+        margin-bottom: 14px;
+    }
+}
+
 .btn {
     display: inline-flex;
     padding: 3px;
@@ -15,15 +28,7 @@
         background-color: rgb(253, 81, 109);
     }
 
-    & > svg {
+    &>svg {
         font-size: 14px;
-    }
-}
-
-.listItem {
-    font-size: 18px;
-
-    &:not(:last-child) {
-        margin-bottom: 12px;
     }
 }

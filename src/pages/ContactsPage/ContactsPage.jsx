@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ContactForm from '../../modules/ContactForm';
 import Filter from '../../modules/Filter';
 import ContactList from '../../modules/ContactList';
+import Card from 'shared/components/Card/Card';
 
 import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from '../../redux/contacts/contacts-operations';
 import { setFilter } from '../../redux/filter/filter-slice';
@@ -41,14 +42,14 @@ const ContactsPage = () => {
   
   return (
     <main className={styles.main}>
-      <div className={styles.contacts}>
+      <Card className={styles.contacts}>
         <h1 className={styles.title}>Your contacts</h1>
         <Filter filter={filter} changeFilter={filterHandler} />
         {isItems && <ContactList contacts={filteredContacts} onRemoveContact={removeHandler} />}
         {!noContacts && <p>You have no added contacts jet</p>}
         {loading && <p>Loading...</p>}
         {Boolean(error) && <p>{error}</p>}
-      </div>
+      </Card>
       
       <ContactForm onSubmit={submitHandler} contacts={contacts} />
     </main>
