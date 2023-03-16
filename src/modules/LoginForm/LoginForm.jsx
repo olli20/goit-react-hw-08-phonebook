@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TextField from "../../shared/components/TextField/TextField";
 import Button from "../../shared/components/Button/Button";
 import Card from '../../shared/components/Card/Card';
@@ -23,3 +25,7 @@ const LoginForm = ({onSubmit}) => {
 };
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+}

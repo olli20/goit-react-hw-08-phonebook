@@ -15,6 +15,10 @@ const tech = [
   },
   {
     id: nanoid(),
+    name: 'Redux Persist',
+  },
+  {
+    id: nanoid(),
     name: 'Axios',
   },
   {

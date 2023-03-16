@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TextField from "../../shared/components/TextField/TextField";
 import Button from "../../shared/components/Button/Button";
 import Card from '../../shared/components/Card/Card';
@@ -12,15 +14,19 @@ const RegisterForm = ({onSubmit}) => {
     const { name, email, password } = state;
 
     return (
-            <Card className={styles.card}>
-                <form onSubmit={handleSubmit} className={styles.form}>
-                    <TextField value={name} handleChange={handleChange} {...fields.name} />
-                    <TextField value={email} handleChange={handleChange} {...fields.email} />
-                    <TextField value={password} handleChange={handleChange} {...fields.password} />
-                    <Button className={styles.button} type="submit" disabled={false}>Register</Button>
-                </form>
-            </Card>
+        <Card className={styles.card}>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <TextField value={name} handleChange={handleChange} {...fields.name} />
+                <TextField value={email} handleChange={handleChange} {...fields.email} />
+                <TextField value={password} handleChange={handleChange} {...fields.password} />
+                <Button className={styles.button} type="submit" disabled={false}>Register</Button>
+            </form>
+        </Card>
     );
 };
 
 export default RegisterForm;
+
+RegisterForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+}

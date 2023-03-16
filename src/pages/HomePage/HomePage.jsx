@@ -8,7 +8,6 @@ import tech from './tech';
 
 import styles from './home-page.module.scss';
 
-
 const HomePage = () => {
     const isLogin = useSelector(isUserLogin);
     const { name } = useSelector(getUser);
@@ -18,13 +17,13 @@ const HomePage = () => {
             <Card>
                 {!isLogin && <h1 className={styles.title}>Welcome</h1>}
                 {isLogin && <h1 className={styles.title}>Welcome, {name}</h1>}
-                <p className={styles.message}>This App was created using React Tech Stack</p>
+                <p className={styles.message}>This App was created using React and other technologies</p>
                 <ul className={styles.list}>
-                    {tech.map(({name, id}) => <li key={id} className={styles.item}>{name}</li>)}
+                    {tech.map(({ name, id }) => <li key={id} className={styles.item}>{name}</li>)}
                 </ul>
             </Card>
-        </main> 
-    )
-}
+        </main>
+    );
+};
 
 export default HomePage;

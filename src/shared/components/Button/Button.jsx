@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './button.module.scss';
 
 const Button = ({className, disabled, type, onClick, children}) => {
@@ -15,3 +17,11 @@ const Button = ({className, disabled, type, onClick, children}) => {
 };
 
 export default Button;
+
+Button.propTypes = {
+    children: PropTypes.any.isRequired,
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool,
+    type: PropTypes.oneOf(['button', 'submit', 'reset']),
+}
